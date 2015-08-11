@@ -14,8 +14,9 @@ import com.github.aoiroaoino.json4s.optics.JNumberOptics._
 
 class JObjectOpticsSpec extends TestSuite {
 
-  val jValue: JValue  = JObject("first" -> JInt(1), "second" -> JInt(2), "third" -> JInt(3))
-  val other: JValue   = JString("string")
+  val jValue: JValue   = JObject("first" -> JInt(1), "second" -> JInt(2), "third" -> JInt(3))
+  val jObject: JObject = JObject("name" -> JString("AoiroAoino"), "age" -> JInt(25))
+  val other: JValue    = JString("string")
 
   it("each - modify") {
     (jObjectPrism ^|->> each ^<-? jIntPrism).modify(_ + 100)(jValue) shouldEqual
@@ -34,5 +35,23 @@ class JObjectOpticsSpec extends TestSuite {
 
   it("Other JValue") {
     (jObjectPrism ^|-? index("first") ^<-? jIntPrism).set(999)(other) shouldEqual other
+  }
+
+  it("at - get") {
+    (jObject &|-> at("name") get) shouldEqual Some(JString("AoiroAoino"))
+    (jObject &|-> at("email") get) shouldEqual None
+  }
+
+  it("at - set") {
+    jObject &|-> at("name") set Some(JString("Aoino")) shouldEqual
+      JObject("name" -> JString("Aoino"), "age" -> JInt(25))
+
+    jObject &|-> at("address") set Some(JString("Tokyo")) shouldEqual
+      JObject("name" -> JString("AoiroAoino"), "age" -> JInt(25), "address" -> JString("Tokyo"))
+
+    jObject &|-> at("age") set None shouldEqual
+      JObject("name" -> JString("AoiroAoino"))
+
+    jObject &|-> at("email") set None shouldEqual jObject
   }
 }
