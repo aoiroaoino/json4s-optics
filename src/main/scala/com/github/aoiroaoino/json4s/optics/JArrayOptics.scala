@@ -8,7 +8,7 @@ trait JArrayOptics {
   def jArrayPrism = Prism[JValue, List[JValue]] {
     case ja: JArray => Some(ja.arr)
     case _          => None
-  }(JArray(_))
+  }(JArray.apply)
 }
 
 object JArrayOptics extends JArrayOptics

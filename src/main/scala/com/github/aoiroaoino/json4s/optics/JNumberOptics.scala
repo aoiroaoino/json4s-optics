@@ -13,17 +13,17 @@ trait JNumberOptics {
   def jNumberToDouble = Prism[JNumber, Double] {
     case JDouble(j) => Some(j)
     case _          => None
-  }(JDouble(_))
+  }(JDouble.apply)
 
   def jNumberToDecimal = Prism[JNumber, BigDecimal] {
     case JDecimal(j) => Some(j)
     case _           => None
-  }(JDecimal(_))
+  }(JDecimal.apply)
 
   def jNumberToInt = Prism[JNumber, BigInt] {
     case JInt(j) => Some(j)
     case _       => None
-  }(JInt(_))
+  }(JInt.apply)
 
   def jDoublePrism =
     jNumberPrism ^<-? jNumberToDouble

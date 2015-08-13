@@ -8,7 +8,7 @@ trait JStringOptics {
   def jStringPrism = Prism[JValue, String] {
     case JString(s) => Some(s)
     case _          => None
-  }(JString(_))
+  }(JString.apply)
 }
 
 object JStringOptics extends JStringOptics
