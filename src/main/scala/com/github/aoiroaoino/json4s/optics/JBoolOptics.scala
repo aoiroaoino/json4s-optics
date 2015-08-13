@@ -8,7 +8,7 @@ trait JBoolOptics {
   def jBoolPrism = Prism[JValue, Boolean] {
     case JBool(b) => Some(b)
     case _        => None
-  }(JBool(_))
+  }(JBool.apply)
 }
 
 object JBoolOptics extends JBoolOptics
