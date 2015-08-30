@@ -9,18 +9,18 @@ class JStringOpticsSpec extends TestSuite {
   val other: JValue = JInt(100)
 
   it("getOption") {
-    jStringPrism.getOption(jString) shouldEqual Some("red")
+    _jString.getOption(jString) shouldEqual Some("red")
   }
 
   it("set") {
-    jStringPrism.set("green")(jString) shouldEqual JString("green")
+    _jString.set("green")(jString) shouldEqual JString("green")
   }
 
   it("modify") {
-    jStringPrism.modify(_.toUpperCase)(jString) shouldEqual JString("RED")
+    _jString.modify(_.toUpperCase)(jString) shouldEqual JString("RED")
   }
 
   it("Other JValue") {
-    jStringPrism.getOption(other) shouldEqual None
+    _jString.getOption(other) shouldEqual None
   }
 }
