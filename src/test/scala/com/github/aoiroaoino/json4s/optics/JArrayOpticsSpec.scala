@@ -15,15 +15,15 @@ class JArrayOpticsSpec extends TestSuite {
   val other: JValue  = JInt(100)
 
   it("each - modify") {
-    (jArrayPrism ^|->> each ^<-? jStringPrism).modify(_.toUpperCase)(jArray) shouldEqual
+    (_jArray ^|->> each ^<-? jStringPrism).modify(_.toUpperCase)(jArray) shouldEqual
       JArray(List(JString("A"), JString("B"), JString("C")))
   }
 
   it("index - getOption") {
-    (jArrayPrism ^|-? index(2) ^<-? jStringPrism).getOption(jArray) shouldEqual Some("c")
+    (_jArray ^|-? index(2) ^<-? jStringPrism).getOption(jArray) shouldEqual Some("c")
   }
 
   it("Other JValue") {
-    (jArrayPrism ^|->> each ^<-? jStringPrism).modify(_.toUpperCase)(other) shouldEqual other
+    (_jArray ^|->> each ^<-? jStringPrism).modify(_.toUpperCase)(other) shouldEqual other
   }
 }
