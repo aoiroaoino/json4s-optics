@@ -1,6 +1,6 @@
 package com.github.aoiroaoino.json4s.optics
 
-import monocle.std.map._
+// import monocle.std.map._
 import monocle.syntax.apply._
 import monocle.function.At._
 import monocle.function.Each._
@@ -19,22 +19,22 @@ class JObjectOpticsSpec extends TestSuite {
   val other: JValue    = JString("string")
 
   it("each - modify") {
-    (jObjectPrism ^|->> each ^<-? jIntPrism).modify(_ + 100)(jValue) shouldEqual
+    (_jObject ^|->> each ^<-? jIntPrism).modify(_ + 100)(jValue) shouldEqual
       JObject("first" -> JInt(101), "second" -> JInt(102), "third" -> JInt(103))
   }
 
   it("index - set") {
-    (jObjectPrism ^|-? index("first") ^<-? jIntPrism).set(999)(jValue) shouldEqual
+    (_jObject ^|-? index("first") ^<-? jIntPrism).set(999)(jValue) shouldEqual
       JObject("first" -> JInt(999), "second" -> JInt(2), "third" -> JInt(3))
   }
 
   it("filterIndex - modify") {
-    (jObjectPrism ^|->> filterIndex((_: String).endsWith("d")) ^<-? jIntPrism).modify(_ * 100)(jValue) shouldEqual
+    (_jObject ^|->> filterIndex((_: String).endsWith("d")) ^<-? jIntPrism).modify(_ * 100)(jValue) shouldEqual
       JObject("first" -> JInt(1), "second" -> JInt(200), "third" -> JInt(300))
   }
 
   it("Other JValue") {
-    (jObjectPrism ^|-? index("first") ^<-? jIntPrism).set(999)(other) shouldEqual other
+    (_jObject ^|-? index("first") ^<-? jIntPrism).set(999)(other) shouldEqual other
   }
 
   it("at - get") {
