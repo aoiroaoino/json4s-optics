@@ -12,55 +12,55 @@ class JNumberOpticsSpec extends TestSuite {
 
   describe("JDouble") {
     it("getOption") {
-      jDoublePrism.getOption(jDouble) shouldEqual Some(1.1)
+      _jDouble.getOption(jDouble) shouldEqual Some(1.1)
     }
 
     it("set") {
-      jDoublePrism.set(1.5)(jDouble) shouldEqual JDouble(1.5)
+      _jDouble.set(1.5)(jDouble) shouldEqual JDouble(1.5)
     }
 
     it("modify") {
-      jDoublePrism.modify(_ + 0.5)(jDouble) shouldEqual JDouble(1.6)
+      _jDouble.modify(_ + 0.5)(jDouble) shouldEqual JDouble(1.6)
     }
 
     it("Other JValue") {
-      jDoublePrism.getOption(other) shouldEqual None
+      _jDouble.getOption(other) shouldEqual None
     }
   }
 
   describe("JDecimal") {
     it("getOption") {
-      jDecimalPrism.getOption(jDecimal) shouldEqual Some(1.1)
+      _jDecimal.getOption(jDecimal) shouldEqual Some(1.1)
     }
 
     it("set") {
-      jDecimalPrism.set(BigDecimal(1.5))(jDecimal) shouldEqual JDecimal(1.5)
+      _jDecimal.set(BigDecimal(1.5))(jDecimal) shouldEqual JDecimal(1.5)
     }
 
     it("modify") {
-      jDecimalPrism.modify(_ + 0.5)(jDecimal) shouldEqual JDecimal(1.6)
+      _jDecimal.modify(_ + 0.5)(jDecimal) shouldEqual JDecimal(1.6)
     }
 
     it("Other JValue") {
-      jDecimalPrism.getOption(other) shouldEqual None
+      _jDecimal.getOption(other) shouldEqual None
     }
   }
 
   describe("JInt") {
     it("getOption") {
-      jIntPrism.getOption(jInt) shouldEqual Some(10)
+      _jInt.getOption(jInt) shouldEqual Some(10)
     }
 
     it("set") {
-      jIntPrism.set(5)(jInt) shouldEqual JInt(5)
+      _jInt.set(5)(jInt) shouldEqual JInt(5)
     }
 
     it("modify") {
-      jIntPrism.modify(_ + 10)(jInt) shouldEqual JInt(20)
+      _jInt.modify(_ + 10)(jInt) shouldEqual JInt(20)
     }
 
     it("Other JValue") {
-      jIntPrism.getOption(other) shouldEqual None
+      _jInt.getOption(other) shouldEqual None
     }
   }
 }

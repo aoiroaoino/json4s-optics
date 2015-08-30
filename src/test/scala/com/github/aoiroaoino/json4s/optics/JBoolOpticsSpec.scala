@@ -9,18 +9,18 @@ class JBoolOpticsSpec extends TestSuite {
   val other: JValue = JInt(100)
 
   it("getOption") {
-    jBoolPrism.getOption(jBool) shouldEqual Some(true)
+    _jBool.getOption(jBool) shouldEqual Some(true)
   }
 
   it("set") {
-    jBoolPrism.set(false)(jBool) shouldEqual JBool(false)
+    _jBool.set(false)(jBool) shouldEqual JBool(false)
   }
 
   it("modify") {
-    jBoolPrism.modify(!_)(jBool) shouldEqual JBool(false)
+    _jBool.modify(!_)(jBool) shouldEqual JBool(false)
   }
 
   it("Other JValue") {
-    jBoolPrism.getOption(other) shouldEqual None
+    _jBool.getOption(other) shouldEqual None
   }
 }
