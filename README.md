@@ -10,8 +10,13 @@ The Json4s Optics is providing optical operation for Json4s by Monocle.
 
 You need the following imports.
 ```scala
+// Json4s
 import org.json4s.JsonAST._
+
+// Monocle
 import monocle._, Monocle._
+
+// This library
 import com.github.aoiroaoino.json4s.optics.AllOptics._
 ```
 
@@ -26,25 +31,25 @@ val json: JValue = JObject(
 
 Get age value.
 ```scala
-json applyPrism jObjectPrism composeOptional index("age") composePrism jIntPrism getOption
+json applyPrism _jObject composeOptional index("age") composePrism _jInt getOption
 //=> Some(25)
 ```
 
 Capitalize name.
 ```scala
-json applyPrism jObjectPrism composeOptional index("name") composePrism jStringPrism modify(_.capitalize)
+json applyPrism _jObject composeOptional index("name") composePrism _jString modify(_.capitalize)
 //=> JObject("name" -> JString("Aoino"), "age" -> ...)
 ```
 
 Of cource you can also use alias methods.
 ```scala
-json &<-? jObjectPrism ^|-? index("name") ^<-? jStringPrism modify(_.capitalize)
+json &<-? _jObject ^|-? index("name") ^<-? _jString modify(_.capitalize)
 //=> same as above
 ```
 
 And easy traverse.
 ```scala
-json &<-? jObjectPrism ^|-? index("favorites") ^<-? jArrayPrism ^|->> each ^<-? jStringPrism modify(_.capitalize)
+json &<-? _jObject ^|-? index("favorites") ^<-? _jArray ^|->> each ^<-? _jString modify(_.capitalize)
 //=> JObject("name" -> ..., "favorites" -> JArray(List(JString("Scala"), JString("Haskell"))))
 ```
 
