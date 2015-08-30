@@ -1,38 +1,52 @@
 package com.github.aoiroaoino.json4s.optics
 
-import monocle.Prism
+import monocle.{Prism, Iso}
 import org.json4s.JsonAST.{JValue, JNumber, JDouble, JDecimal, JInt}
 
 trait JNumberOptics {
 
+  def _jDouble: Prism[JValue, Double] =
+    jNumberPrism ^<-? jDoublePrism ^<-> jDoubleToDouble
+
+  def _jDecimal: Prism[JValue, BigDecimal] =
+    jNumberPrism ^<-? jDecimalPrism ^<-> jDecimalToBigDecimal
+
+  def _jInt: Prism[JValue, BigInt] =
+    jNumberPrism ^<-? jIntPrism ^<-> jIntToBigInt
+
+
+  //=== JNumber Prisms
   def jNumberPrism = Prism[JValue, JNumber] {
-    case j: JNumber => Some(j)
-    case _           => None
+    case jn: JNumber => Some(jn)
+    case _          => None
   }(jNumberToJValue)
 
-  def jNumberToDouble = Prism[JNumber, Double] {
-    case JDouble(j) => Some(j)
-    case _          => None
-  }(JDouble.apply)
-
-  def jNumberToDecimal = Prism[JNumber, BigDecimal] {
-    case JDecimal(j) => Some(j)
+  def jDoublePrism = Prism[JNumber, JDouble] {
+    case jd: JDouble => Some(jd)
     case _           => None
-  }(JDecimal.apply)
+  }(castToJNumberFrom[JDouble])
 
-  def jNumberToInt = Prism[JNumber, BigInt] {
-    case JInt(j) => Some(j)
-    case _       => None
-  }(JInt.apply)
+  def jDecimalPrism = Prism[JNumber, JDecimal] {
+    case jd: JDecimal => Some(jd)
+    case _            => None
+  }(castToJNumberFrom[JDecimal])
 
-  def jDoublePrism =
-    jNumberPrism ^<-? jNumberToDouble
+  def jIntPrism = Prism[JNumber, JInt] {
+    case ji: JInt => Some(ji)
+    case _        => None
+  }(castToJNumberFrom[JInt])
 
-  def jDecimalPrism =
-    jNumberPrism ^<-? jNumberToDecimal
 
-  def jIntPrism =
-    jNumberPrism ^<-? jNumberToInt
+  //=== Iso
+  def jDoubleToDouble: Iso[JDouble, Double] =
+    Iso[JDouble, Double](_.num)(JDouble.apply)
+
+  def jDecimalToBigDecimal: Iso[JDecimal, BigDecimal] =
+    Iso[JDecimal, BigDecimal](_.num)(JDecimal.apply)
+
+  def jIntToBigInt: Iso[JInt, BigInt] =
+    Iso[JInt, BigInt](_.num)(JInt.apply)
+
 
   // JNumber to JValue
   private def jNumberToJValue(j: JNumber): JValue = {
@@ -42,6 +56,9 @@ trait JNumberOptics {
       case x: JInt     => x
     }
   }
+
+  // JDouble, JDecimal or JInt to JNumber
+  private def castToJNumberFrom[A <: JNumber](j: A): JNumber = j
 }
 
 object JNumberOptics extends JNumberOptics
