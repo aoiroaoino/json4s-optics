@@ -1,6 +1,7 @@
 package com.github.aoiroaoino.json4s.optics
 
 import monocle.{Lens, Prism, Iso}
+import monocle.function.Empty
 import monocle.macros.GenLens
 
 import org.json4s.JsonAST.{JValue, JArray}
@@ -23,6 +24,10 @@ trait JArrayOptics {
 
   private def jValueToJArray(ja: JArray): JValue = ja
 
+  implicit def jArrayEmpty: Empty[JArray] = new Empty[JArray] {
+    def empty: Prism[JArray, Unit] =
+      Prism((ja: JArray) => if (ja.arr.isEmpty) Some(()) else None)(_ => JArray(List.empty[JValue]))
+  }
 }
 
 object JArrayOptics extends JArrayOptics
