@@ -4,6 +4,7 @@ package com.github.aoiroaoino.json4s.optics
 import monocle.syntax.apply._
 import monocle.function.At._
 import monocle.function.Each._
+import monocle.function.Empty.{_isEmpty, _empty, empty => mempty}
 import monocle.function.Index._
 import monocle.function.FilterIndex._
 
@@ -53,5 +54,18 @@ class JObjectOpticsSpec extends TestSuite {
       JObject("name" -> JString("AoiroAoino"))
 
     jObject &|-> at("email") set None shouldEqual jObject
+  }
+
+  it("empty") {
+    // Empty#_isEmpty
+    _isEmpty(jObject)      shouldEqual false
+    _isEmpty(JObject(Nil)) shouldEqual true
+
+    // Empty#_empty
+    _empty[JObject] shouldEqual JObject(Nil)
+
+    // Empty#empty
+    (jObject      &<-? mempty getOption) shouldEqual None
+    (JObject(Nil) &<-? mempty getOption) shouldEqual Some(())
   }
 }

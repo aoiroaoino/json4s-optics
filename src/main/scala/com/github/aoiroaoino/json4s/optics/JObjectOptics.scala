@@ -2,7 +2,7 @@ package com.github.aoiroaoino.json4s.optics
 
 import monocle.{Lens, Prism, Traversal}
 import monocle.macros.GenLens
-import monocle.function.{At, Each, Index, FilterIndex}
+import monocle.function.{At, Each, Index, FilterIndex, Empty}
 
 import scalaz.Applicative
 import scalaz.std.list._
@@ -52,6 +52,11 @@ trait JObjectOptics {
       def modifyF[F[_]: Applicative](f: JValue => F[JValue])(s: JObject): F[JObject] =
         s.obj.traverse { case (k, v) => f(v).strengthL(k) }.map(JObject(_))
     }
+  }
+
+  implicit def jObjectEmpty: Empty[JObject] = new Empty[JObject] {
+    def empty: Prism[JObject, Unit] =
+      Prism((jo: JObject) => if (jo.obj.isEmpty) Some(()) else None)(_ => JObject(List.empty[JField]))
   }
 }
 
