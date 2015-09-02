@@ -1,6 +1,7 @@
 package com.github.aoiroaoino.json4s.optics
 
 import monocle.{Prism, Iso}
+import monocle.function.Empty
 
 import org.json4s.JsonAST.{JValue, JString}
 
@@ -18,6 +19,11 @@ trait JStringOptics {
   }(jStringToJValue)
 
   private def jStringToJValue(js: JString): JValue = js
+
+  implicit def jStringEmpty: Empty[JString] = new Empty[JString] {
+    def empty: Prism[JString, Unit] =
+      Prism[JString, Unit](js => if(js.s.isEmpty) Some(()) else None)(_ => JString(""))
+  }
 }
 
 object JStringOptics extends JStringOptics
