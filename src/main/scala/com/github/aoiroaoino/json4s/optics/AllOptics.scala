@@ -6,3 +6,4 @@ object AllOptics
   with    JNumberOptics
   with    JBoolOptics
   with    JStringOptics
+  with    JNullOptics
