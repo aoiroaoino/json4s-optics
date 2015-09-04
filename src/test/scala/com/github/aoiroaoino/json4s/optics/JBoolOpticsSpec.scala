@@ -5,22 +5,28 @@ import com.github.aoiroaoino.json4s.optics.JBoolOptics._
 
 class JBoolOpticsSpec extends TestSuite {
 
-  val jBool: JValue = JBool(true)
-  val other: JValue = JInt(100)
+  val jValue: JValue = JBool(true)
+  val jBool: JBool   = JBool(false)
+  val other: JValue  = JInt(100)
 
   it("getOption") {
-    _jBool.getOption(jBool) shouldEqual Some(true)
+    _jBool.getOption(jValue) shouldEqual Some(true)
   }
 
   it("set") {
-    _jBool.set(false)(jBool) shouldEqual JBool(false)
+    _jBool.set(false)(jValue) shouldEqual JBool(false)
   }
 
   it("modify") {
-    _jBool.modify(!_)(jBool) shouldEqual JBool(false)
+    _jBool.modify(!_)(jValue) shouldEqual JBool(false)
   }
 
   it("Other JValue") {
     _jBool.getOption(other) shouldEqual None
+  }
+
+  it("Lens") {
+    jBoolLens.get(jBool)       shouldEqual false
+    jBoolLens.set(true)(jBool) shouldEqual JBool(true)
   }
 }

@@ -26,6 +26,12 @@ class JNumberOpticsSpec extends TestSuite {
     it("Other JValue") {
       _jDouble.getOption(other) shouldEqual None
     }
+
+    it("Lens") {
+      val n = JDouble(0.5)
+      jDoubleLens.get(n)      shouldEqual 0.5
+      jDoubleLens.set(1.0)(n) shouldEqual JDouble(1.0)
+    }
   }
 
   describe("JDecimal") {
@@ -44,6 +50,12 @@ class JNumberOpticsSpec extends TestSuite {
     it("Other JValue") {
       _jDecimal.getOption(other) shouldEqual None
     }
+
+    it("Lens") {
+      val n = JDecimal(0.5)
+      jDecimalLens.get(n)      shouldEqual 0.5
+      jDecimalLens.set(1.0)(n) shouldEqual JDecimal(1.0)
+    }
   }
 
   describe("JInt") {
@@ -61,6 +73,12 @@ class JNumberOpticsSpec extends TestSuite {
 
     it("Other JValue") {
       _jInt.getOption(other) shouldEqual None
+    }
+
+    it("Lens") {
+      val n = JInt(5)
+      jIntLens.get(n)    shouldEqual 5
+      jIntLens.set(1)(n) shouldEqual JInt(1)
     }
   }
 }

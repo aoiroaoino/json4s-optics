@@ -1,6 +1,7 @@
 package com.github.aoiroaoino.json4s.optics
 
-import monocle.{Prism, Iso}
+import monocle.{Lens, Prism, Iso}
+import monocle.macros.GenLens
 import org.json4s.JsonAST.{JValue, JNumber, JDouble, JDecimal, JInt}
 
 trait JNumberOptics {
@@ -46,6 +47,17 @@ trait JNumberOptics {
 
   def jIntToBigInt: Iso[JInt, BigInt] =
     Iso[JInt, BigInt](_.num)(JInt.apply)
+
+
+  //=== Lens
+  def jDoubleLens: Lens[JDouble, Double] =
+    GenLens[JDouble](_.num)
+
+  def jDecimalLens: Lens[JDecimal, BigDecimal] =
+    GenLens[JDecimal](_.num)
+
+  def jIntLens: Lens[JInt, BigInt] =
+    GenLens[JInt](_.num)
 
 
   // JNumber to JValue
