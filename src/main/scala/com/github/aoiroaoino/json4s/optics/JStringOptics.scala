@@ -1,6 +1,7 @@
 package com.github.aoiroaoino.json4s.optics
 
-import monocle.{Prism, Iso}
+import monocle.{Lens, Prism, Iso}
+import monocle.macros.GenLens
 import monocle.function.Empty
 
 import org.json4s.JsonAST.{JValue, JString}
@@ -9,6 +10,9 @@ trait JStringOptics {
 
   def _jString: Prism[JValue, String] =
     jStringPrism ^<-> jStringToString
+
+  def jStringLens: Lens[JString, String] =
+    GenLens[JString](_.s)
 
   def jStringToString: Iso[JString, String] =
     Iso[JString, String](_.s)(JString.apply)
