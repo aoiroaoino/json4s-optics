@@ -4,7 +4,7 @@ import Keys._
 object ProjectBuild extends Build {
 
   val projectScalaVersion = "2.11.7"
-  val monocleVersion      = "1.1.1"
+  val monocleVersion      = "1.2.0-M1"
   val json4sVersion       = "3.2.11"
 
   val defaultSettings = Seq(
