@@ -3,20 +3,10 @@ import Keys._
 
 object ProjectBuild extends Build {
 
-  val projectScalaVersion = "2.11.7"
-  val monocleVersion      = "1.2.0-M1"
-  val json4sVersion       = "3.2.11"
-
   val defaultSettings = Seq(
-    version := "0.0.1-SNAPSHOT",
-    scalaVersion := projectScalaVersion,
-    libraryDependencies ++= Seq(
-      "org.json4s"                 %% "json4s-native" % json4sVersion,
-      "com.github.julien-truffaut" %% "monocle-core"  % monocleVersion,
-      "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
-      "org.scalatest"              %% "scalatest"     % "2.2.1"         % "test"
-    ),
-    scalacOptions ++= Seq(
+    scalaVersion        := "2.11.7",
+    crossScalaVersions  := Seq("2.10.5", "2.11.7"),
+    scalacOptions      ++= Seq(
       "-deprecation",
       "-feature",
       "-Xlint",
@@ -28,9 +18,22 @@ object ProjectBuild extends Build {
     )
   )
 
+  val json4sVersion       = "3.2.11"
+  val monocleVersion      = "1.2.0-M1"
+
+  // main libraries
+  lazy val json4s       = "org.json4s"                 %% "json4s-native" % json4sVersion
+  lazy val monocleCore  = "com.github.julien-truffaut" %% "monocle-core"  % monocleVersion
+  lazy val monocleMacro = "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion
+
+  // test libraries
+  lazy val scalaTest    = "org.scalatest"              %% "scalatest"     % "2.2.1"         % "test"
+
   lazy val core = Project(
     "json4s-optics",
     file("."),
-    settings = defaultSettings
+    settings = defaultSettings ++ Seq(
+      libraryDependencies ++= Seq(json4s, monocleCore, monocleMacro, scalaTest)
+    )
   )
 }
