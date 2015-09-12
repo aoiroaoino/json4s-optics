@@ -29,11 +29,30 @@ object ProjectBuild extends Build {
   // test libraries
   lazy val scalaTest    = "org.scalatest"              %% "scalatest"     % "2.2.1"         % "test"
 
+  lazy val root = Project(
+    id       = "json4s-optics",
+    base     = file("."),
+    settings = defaultSettings,
+    aggregate    = Seq(core, test),
+    dependencies = Seq(core, test)
+  )
+
   lazy val core = Project(
-    "json4s-optics",
-    file("."),
+    id       = "core",
+    base     = file("core"),
     settings = defaultSettings ++ Seq(
-      libraryDependencies ++= Seq(json4s, monocleCore, monocleMacro, scalaTest)
+      name := "json4s-optics-core",
+      libraryDependencies ++= Seq(json4s, monocleCore, monocleMacro)
     )
+  )
+
+  lazy val test = Project(
+    id       = "test",
+    base     = file("test"),
+    settings = defaultSettings ++ Seq(
+      name := "json4s-optics-test",
+      libraryDependencies ++= Seq(json4s, monocleCore, monocleMacro, scalaTest)
+    ),
+    dependencies = Seq(core)
   )
 }
