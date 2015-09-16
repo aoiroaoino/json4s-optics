@@ -53,5 +53,5 @@ json &<-? _jObject ^|-? index("favorites") ^<-? _jArray ^|->> each ^<-? _jString
 //=> JObject("name" -> ..., "favorites" -> JArray(List(JString("Scala"), JString("Haskell"))))
 ```
 
-If you want to more samples, please look [here!](https://github.com/aoiroaoino/json4s-optics/tree/master/src/test/scala/com/github/aoiroaoino/json4s/optics)
+If you want to more samples, please look [here!](https://github.com/aoiroaoino/json4s-optics/tree/master/test/src/test/scala/com/github/aoiroaoino/json4s/optics)
 
