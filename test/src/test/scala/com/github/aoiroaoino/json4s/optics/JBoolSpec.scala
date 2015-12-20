@@ -2,7 +2,7 @@ package com.github.aoiroaoino.json4s.optics
 
 import org.json4s.JsonAST.{JValue, JBool, JInt}
 
-class JBoolOpticsSpec extends TestSuite {
+class JBoolSpec extends TestSuite {
 
   val jValue: JValue = JBool(true)
   val jBool: JBool   = JBool(false)

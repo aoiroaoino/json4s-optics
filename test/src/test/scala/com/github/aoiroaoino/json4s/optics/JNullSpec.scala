@@ -5,7 +5,7 @@ import monocle.function.Empty.{_isEmpty, _empty, empty => mempty}
 
 import org.json4s.JsonAST.{JValue, JInt, JNull}
 
-class JNullOpticsSpec extends TestSuite {
+class JNullSpec extends TestSuite {
 
   val jValue: JValue = JNull
   val other: JValue  = JInt(100)

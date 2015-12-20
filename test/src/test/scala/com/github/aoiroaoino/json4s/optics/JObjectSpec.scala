@@ -10,7 +10,7 @@ import monocle.function.FilterIndex._
 
 import org.json4s.JsonAST.{JValue, JInt, JString, JObject}
 
-class JObjectOpticsSpec extends TestSuite {
+class JObjectSpec extends TestSuite {
 
   val jValue: JValue   = JObject("first" -> JInt(1), "second" -> JInt(2), "third" -> JInt(3))
   val jObject: JObject = JObject("name" -> JString("AoiroAoino"), "age" -> JInt(25))
