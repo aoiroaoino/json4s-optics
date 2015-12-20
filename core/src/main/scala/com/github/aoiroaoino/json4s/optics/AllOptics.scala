@@ -1,7 +1,8 @@
 package com.github.aoiroaoino.json4s.optics
 
-object AllOptics
-  extends JObjectOptics
+trait AllOptics
+  extends JValueOptics
+  with    JObjectOptics
   with    JArrayOptics
   with    JNumberOptics
   with    JBoolOptics

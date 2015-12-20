@@ -73,4 +73,5 @@ trait JNumberOptics {
   private def castToJNumberFrom[A <: JNumber](j: A): JNumber = j
 }
 
-object JNumberOptics extends JNumberOptics
+trait JNumberInstances {
+}

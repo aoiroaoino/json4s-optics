@@ -23,11 +23,12 @@ trait JStringOptics {
   }(jStringToJValue)
 
   private def jStringToJValue(js: JString): JValue = js
+}
+
+trait JStringInstances {
 
   implicit def jStringEmpty: Empty[JString] = new Empty[JString] {
     def empty: Prism[JString, Unit] =
       Prism[JString, Unit](js => if(js.s.isEmpty) Some(()) else None)(_ => JString(""))
   }
 }
-
-object JStringOptics extends JStringOptics
