@@ -17,7 +17,7 @@ import org.json4s.JsonAST._
 import monocle._, Monocle._
 
 // This library
-import com.github.aoiroaoino.json4s.optics.AllOptics._
+import com.github.aoiroaoino.json4s.optics.all._
 ```
 
 If you have the following json value.
