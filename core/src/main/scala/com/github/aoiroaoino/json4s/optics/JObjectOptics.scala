@@ -28,7 +28,7 @@ trait JObjectOptics {
 
 trait JObjectInstances {
 
-  implicit def jObjectAt: At[JObject, String, JValue] = new At[JObject, String, JValue] {
+  implicit def jObjectAt: At[JObject, String, Option[JValue]] = new At[JObject, String, Option[JValue]] {
     def at(name: String) = Lens((_: JObject).obj.toMap.get(name)) {
       optV => jo => {
         val map = jo.obj.toMap

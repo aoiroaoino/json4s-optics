@@ -5,7 +5,7 @@ object ProjectBuild extends Build {
 
   val defaultSettings = Seq(
     scalaVersion        := "2.11.7",
-    crossScalaVersions  := Seq("2.10.5", "2.11.7"),
+    crossScalaVersions  := Seq("2.10.6", "2.11.7"),
     scalacOptions      ++= Seq(
       "-deprecation",
       "-feature",
@@ -19,7 +19,7 @@ object ProjectBuild extends Build {
   )
 
   val json4sVersion       = "3.2.11"
-  val monocleVersion      = "1.2.0-M1"
+  val monocleVersion      = "1.2.0"
 
   // main libraries
   lazy val json4s       = "org.json4s"                 %% "json4s-native" % json4sVersion
@@ -27,7 +27,7 @@ object ProjectBuild extends Build {
   lazy val monocleMacro = "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion
 
   // test libraries
-  lazy val scalaTest    = "org.scalatest"              %% "scalatest"     % "2.2.1"         % "test"
+  lazy val scalaTest    = "org.scalatest"              %% "scalatest"     % "2.2.4"         % "test"
 
   lazy val root = Project(
     id       = "json4s-optics",
