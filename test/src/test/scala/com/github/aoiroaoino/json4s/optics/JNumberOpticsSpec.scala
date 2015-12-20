@@ -1,7 +1,6 @@
 package com.github.aoiroaoino.json4s.optics
 
 import org.json4s.JsonAST.{JValue, JNumber, JDouble, JDecimal, JInt, JBool}
-import com.github.aoiroaoino.json4s.optics.JNumberOptics._
 
 class JNumberOpticsSpec extends TestSuite {
 

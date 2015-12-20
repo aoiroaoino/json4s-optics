@@ -24,6 +24,9 @@ trait JObjectOptics {
   }(jValueToJObject)
 
   private def jValueToJObject(jo: JObject): JValue = jo
+}
+
+trait JObjectInstances {
 
   implicit def jObjectAt: At[JObject, String, JValue] = new At[JObject, String, JValue] {
     def at(name: String) = Lens((_: JObject).obj.toMap.get(name)) {
@@ -59,5 +62,3 @@ trait JObjectOptics {
       Prism((jo: JObject) => if (jo.obj.isEmpty) Some(()) else None)(_ => JObject(List.empty[JField]))
   }
 }
-
-object JObjectOptics extends JObjectOptics

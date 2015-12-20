@@ -1,7 +1,6 @@
 package com.github.aoiroaoino.json4s.optics
 
 import org.json4s.JsonAST.{JValue, JBool, JInt}
-import com.github.aoiroaoino.json4s.optics.JBoolOptics._
 
 class JBoolOpticsSpec extends TestSuite {
 

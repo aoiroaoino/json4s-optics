@@ -23,11 +23,12 @@ trait JArrayOptics {
   }(jValueToJArray)
 
   private def jValueToJArray(ja: JArray): JValue = ja
+}
+
+trait JArrayInstances {
 
   implicit def jArrayEmpty: Empty[JArray] = new Empty[JArray] {
     def empty: Prism[JArray, Unit] =
       Prism((ja: JArray) => if (ja.arr.isEmpty) Some(()) else None)(_ => JArray(List.empty[JValue]))
   }
 }
-
-object JArrayOptics extends JArrayOptics

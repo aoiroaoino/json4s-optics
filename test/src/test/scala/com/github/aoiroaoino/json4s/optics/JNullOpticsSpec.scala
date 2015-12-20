@@ -5,8 +5,6 @@ import monocle.function.Empty.{_isEmpty, _empty, empty => mempty}
 
 import org.json4s.JsonAST.{JValue, JInt, JNull}
 
-import com.github.aoiroaoino.json4s.optics.JNullOptics._
-
 class JNullOpticsSpec extends TestSuite {
 
   val jValue: JValue = JNull

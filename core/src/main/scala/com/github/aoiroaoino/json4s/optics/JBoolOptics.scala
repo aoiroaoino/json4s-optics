@@ -24,4 +24,5 @@ trait JBoolOptics {
   private def jBoolToJValue(jb: JBool): JValue = jb
 }
 
-object JBoolOptics extends JBoolOptics
+trait JBoolInstances {
+}

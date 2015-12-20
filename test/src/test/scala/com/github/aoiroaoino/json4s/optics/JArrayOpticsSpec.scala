@@ -8,9 +8,6 @@ import monocle.function.Index._
 
 import org.json4s.JsonAST.{JValue, JInt, JString, JArray}
 
-import com.github.aoiroaoino.json4s.optics.JArrayOptics._
-import com.github.aoiroaoino.json4s.optics.JStringOptics._
-
 class JArrayOpticsSpec extends TestSuite {
 
   val jValue: JValue = JArray(List(JString("a"), JString("b"), JString("c")))
