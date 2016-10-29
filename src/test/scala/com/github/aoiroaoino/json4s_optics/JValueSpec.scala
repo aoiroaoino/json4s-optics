@@ -5,6 +5,7 @@ import monocle.function.Plated
 import org.json4s.JsonAST._
 
 class JValueSpec extends TestSuite {
+  import jvalue._
 
   val json: JValue = JObject(
     "name"      -> JString("aoino"),

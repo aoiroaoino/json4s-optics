@@ -6,6 +6,8 @@ import monocle.function.Empty
 
 import org.json4s.JsonAST.{JValue, JString}
 
+object jstring extends JStringOptics with JStringInstances
+
 trait JStringOptics {
 
   def _jString: Prism[JValue, String] =

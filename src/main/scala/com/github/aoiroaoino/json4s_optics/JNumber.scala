@@ -4,6 +4,8 @@ import monocle.{Lens, Prism, Iso}
 import monocle.macros.GenLens
 import org.json4s.JsonAST.{JValue, JNumber, JDouble, JDecimal, JInt}
 
+object jnumber extends JNumberOptics with JNumberInstances
+
 trait JNumberOptics {
 
   def _jDouble: Prism[JValue, Double] =

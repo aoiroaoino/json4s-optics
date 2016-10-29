@@ -7,6 +7,8 @@ import scalaz.Applicative
 
 import org.json4s.JsonAST._
 
+object jvalue extends JValueOptics with JValueInstances
+
 trait JValueOptics {
 }
 

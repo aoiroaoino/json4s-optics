@@ -3,6 +3,7 @@ package com.github.aoiroaoino.json4s_optics
 import org.json4s.JsonAST.{JValue, JBool, JInt}
 
 class JBoolSpec extends TestSuite {
+  import jbool._
 
   val jValue: JValue = JBool(true)
   val jBool: JBool   = JBool(false)

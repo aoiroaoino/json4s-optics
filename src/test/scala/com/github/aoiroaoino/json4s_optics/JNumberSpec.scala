@@ -3,6 +3,7 @@ package com.github.aoiroaoino.json4s_optics
 import org.json4s.JsonAST.{JValue, JNumber, JDouble, JDecimal, JInt, JBool}
 
 class JNumberSpec extends TestSuite {
+  import jnumber._
 
   val jDouble: JValue  = JDouble(1.1)
   val jDecimal: JValue = JDecimal(1.1)

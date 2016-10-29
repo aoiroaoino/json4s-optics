@@ -9,6 +9,8 @@ import monocle.function.Index._
 import org.json4s.JsonAST.{JValue, JInt, JString, JArray}
 
 class JArraySpec extends TestSuite {
+  import jarray._
+  import jstring._
 
   val jValue: JValue = JArray(List(JString("a"), JString("b"), JString("c")))
   val jArray: JArray = JArray(List(JInt(1), JInt(2), JInt(3)))

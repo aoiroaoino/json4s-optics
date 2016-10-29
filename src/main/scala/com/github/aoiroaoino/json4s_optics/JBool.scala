@@ -5,6 +5,8 @@ import monocle.macros.GenLens
 
 import org.json4s.JsonAST.{JValue, JBool}
 
+object jbool extends JBoolOptics with JBoolInstances
+
 trait JBoolOptics {
 
   def _jBool: Prism[JValue, Boolean] =

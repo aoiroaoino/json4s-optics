@@ -6,6 +6,7 @@ import monocle.function.Empty.{_isEmpty, _empty, empty => mempty}
 import org.json4s.JsonAST.{JValue, JInt, JNull}
 
 class JNullSpec extends TestSuite {
+  import jnull._
 
   val jValue: JValue = JNull
   val other: JValue  = JInt(100)

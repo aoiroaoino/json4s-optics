@@ -10,6 +10,8 @@ import scalaz.syntax.traverse._
 
 import org.json4s.JsonAST.{JValue, JObject, JField}
 
+object jobject extends JObjectOptics with JObjectInstances
+
 trait JObjectOptics {
 
   def _jObject: Prism[JValue, JObject] =
