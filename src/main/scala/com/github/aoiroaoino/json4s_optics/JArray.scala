@@ -6,7 +6,7 @@ import monocle.macros.GenLens
 
 import org.json4s.JsonAST.{JValue, JArray}
 
-object jarray extends JArrayOptics with JArrayInstances
+object jarray extends JArrayOptics
 
 trait JArrayOptics {
 
@@ -25,9 +25,7 @@ trait JArrayOptics {
   }(jValueToJArray)
 
   private def jValueToJArray(ja: JArray): JValue = ja
-}
 
-trait JArrayInstances {
 
   implicit def jArrayEmpty: Empty[JArray] = new Empty[JArray] {
     def empty: Prism[JArray, Unit] =

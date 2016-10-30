@@ -5,7 +5,7 @@ import monocle.function.Empty
 
 import org.json4s.JsonAST.{JValue, JNull}
 
-object jnull extends JNullOptics with JNullInstances
+object jnull extends JNullOptics
 
 trait JNullOptics {
 
@@ -15,9 +15,7 @@ trait JNullOptics {
   def jNullPrism = Prism[JValue, JNull.type] {
     jValue => if (jValue == JNull) Some(JNull) else None
   }(_ => JNull: JValue)
-}
 
-trait JNullInstances {
 
   implicit def jNullEmpty: Empty[JNull.type] = new Empty[JNull.type] {
     def empty: Prism[JNull.type, Unit] =

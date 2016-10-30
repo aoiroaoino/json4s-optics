@@ -6,7 +6,7 @@ import monocle.function.Empty
 
 import org.json4s.JsonAST.{JValue, JString}
 
-object jstring extends JStringOptics with JStringInstances
+object jstring extends JStringOptics
 
 trait JStringOptics {
 
@@ -25,9 +25,7 @@ trait JStringOptics {
   }(jStringToJValue)
 
   private def jStringToJValue(js: JString): JValue = js
-}
 
-trait JStringInstances {
 
   implicit def jStringEmpty: Empty[JString] = new Empty[JString] {
     def empty: Prism[JString, Unit] =

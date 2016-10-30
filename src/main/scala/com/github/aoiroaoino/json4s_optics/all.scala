@@ -8,12 +8,3 @@ object all
   with    JBoolOptics
   with    JStringOptics
   with    JNullOptics
-  //
-  with    JValueInstances
-  with    JObjectInstances
-  with    JArrayInstances
-  with    JNumberInstances
-  with    JBoolInstances
-  with    JStringInstances
-  with    JNullInstances
-

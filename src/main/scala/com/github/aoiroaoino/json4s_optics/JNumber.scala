@@ -4,7 +4,7 @@ import monocle.{Lens, Prism, Iso}
 import monocle.macros.GenLens
 import org.json4s.JsonAST.{JValue, JNumber, JDouble, JDecimal, JInt}
 
-object jnumber extends JNumberOptics with JNumberInstances
+object jnumber extends JNumberOptics
 
 trait JNumberOptics {
 
@@ -73,7 +73,4 @@ trait JNumberOptics {
 
   // JDouble, JDecimal or JInt to JNumber
   private def castToJNumberFrom[A <: JNumber](j: A): JNumber = j
-}
-
-trait JNumberInstances {
 }

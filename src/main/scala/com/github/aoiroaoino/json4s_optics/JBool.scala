@@ -5,7 +5,7 @@ import monocle.macros.GenLens
 
 import org.json4s.JsonAST.{JValue, JBool}
 
-object jbool extends JBoolOptics with JBoolInstances
+object jbool extends JBoolOptics
 
 trait JBoolOptics {
 
@@ -24,7 +24,4 @@ trait JBoolOptics {
   }(jBoolToJValue)
 
   private def jBoolToJValue(jb: JBool): JValue = jb
-}
-
-trait JBoolInstances {
 }

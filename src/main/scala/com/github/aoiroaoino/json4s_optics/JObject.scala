@@ -10,7 +10,7 @@ import scalaz.syntax.traverse._
 
 import org.json4s.JsonAST.{JValue, JObject, JField}
 
-object jobject extends JObjectOptics with JObjectInstances
+object jobject extends JObjectOptics
 
 trait JObjectOptics {
 
@@ -26,9 +26,7 @@ trait JObjectOptics {
   }(jValueToJObject)
 
   private def jValueToJObject(jo: JObject): JValue = jo
-}
 
-trait JObjectInstances {
 
   implicit def jObjectAt: At[JObject, String, Option[JValue]] = new At[JObject, String, Option[JValue]] {
     def at(name: String) = Lens((_: JObject).obj.toMap.get(name)) {
