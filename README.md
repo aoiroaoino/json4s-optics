@@ -17,7 +17,7 @@ import org.json4s.JsonAST._
 import monocle._, Monocle._
 
 // This library
-import com.github.aoiroaoino.json4s.optics.all._
+import com.github.aoiroaoino.json4s_optics.all._
 ```
 
 If you have the following json value.
@@ -53,5 +53,5 @@ json &<-? _jObject ^|-? index("favorites") ^<-? _jArray ^|->> each ^<-? _jString
 //=> JObject("name" -> ..., "favorites" -> JArray(List(JString("Scala"), JString("Haskell"))))
 ```
 
-If you want to more samples, please look [here!](https://github.com/aoiroaoino/json4s-optics/tree/master/test/src/test/scala/com/github/aoiroaoino/json4s/optics)
+If you want to more samples, please look [here!](https://github.com/aoiroaoino/json4s-optics/tree/master/src/test/scala/com/github/aoiroaoino/json4s_optics)
 
