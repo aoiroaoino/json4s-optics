@@ -23,9 +23,9 @@ val monocleVersion = "1.3.2"
 
 libraryDependencies ++= Seq(
   // main
-  "org.json4s"                 %% "json4s-native" % "3.2.11",
+  "org.json4s"                 %% "json4s-native" % "3.5.0",
   "com.github.julien-truffaut" %% "monocle-core"  % monocleVersion,
   "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
   // test
-  "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 )
