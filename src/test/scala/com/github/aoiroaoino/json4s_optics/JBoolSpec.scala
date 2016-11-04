@@ -24,9 +24,4 @@ class JBoolSpec extends TestSuite {
   it("Other JValue") {
     _jBool.getOption(other) shouldEqual None
   }
-
-  it("Lens") {
-    jBoolLens.get(jBool)       shouldEqual false
-    jBoolLens.set(true)(jBool) shouldEqual JBool(true)
-  }
 }

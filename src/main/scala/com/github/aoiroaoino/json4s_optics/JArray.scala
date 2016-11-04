@@ -13,9 +13,6 @@ trait JArrayOptics {
   def _jArray: Prism[JValue, List[JValue]] =
     jArrayPrism ^<-> jArrayToList
 
-  def jArrayLens: Lens[JArray, List[JValue]] =
-    GenLens[JArray](_.arr)
-
   def jArrayToList: Iso[JArray, List[JValue]] =
     Iso[JArray, List[JValue]](_.arr)(JArray.apply)
 

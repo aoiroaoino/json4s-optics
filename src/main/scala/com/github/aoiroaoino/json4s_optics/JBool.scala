@@ -12,9 +12,6 @@ trait JBoolOptics {
   def _jBool: Prism[JValue, Boolean] =
     jBoolPrism ^<-> jBoolToBoolean
 
-  def jBoolLens: Lens[JBool, Boolean] =
-    GenLens[JBool](_.value)
-
   def jBoolToBoolean: Iso[JBool, Boolean] =
     Iso[JBool, Boolean](_.value)(JBool.apply)
 

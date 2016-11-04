@@ -17,9 +17,6 @@ trait JObjectOptics {
   def _jObject: Prism[JValue, JObject] =
     jObjectPrism
 
-  def jObjectLens: Lens[JObject, List[JField]] =
-    GenLens[JObject](_.obj)
-
   def jObjectPrism = Prism[JValue, JObject] {
     case jo: JObject => Some(jo)
     case _           => None

@@ -40,9 +40,4 @@ class JStringSpec extends TestSuite {
     (jString     &<-? mempty getOption) shouldEqual None
     (JString("") &<-? mempty getOption) shouldEqual Some(())
   }
-
-  it("Lens") {
-    jStringLens.get(jString)           shouldEqual "blue"
-    jStringLens.set("yellow")(jString) shouldEqual JString("yellow")
-  }
 }

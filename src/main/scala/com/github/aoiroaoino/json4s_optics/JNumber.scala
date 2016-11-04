@@ -51,17 +51,6 @@ trait JNumberOptics {
     Iso[JInt, BigInt](_.num)(JInt.apply)
 
 
-  //=== Lens
-  def jDoubleLens: Lens[JDouble, Double] =
-    GenLens[JDouble](_.num)
-
-  def jDecimalLens: Lens[JDecimal, BigDecimal] =
-    GenLens[JDecimal](_.num)
-
-  def jIntLens: Lens[JInt, BigInt] =
-    GenLens[JInt](_.num)
-
-
   // JNumber to JValue
   private def jNumberToJValue(j: JNumber): JValue = {
     j match {
